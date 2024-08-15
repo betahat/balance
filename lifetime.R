@@ -68,12 +68,15 @@ dat %>%
   ggplot(aes(x = Year, y = value, fill = name)) +
   geom_area(position = 'stack') +
   scale_fill_manual(values = my_pal) +
-  labs(y = "Percent", fill = "Category")+
-  coord_cartesian(ylim = c(0,100), clip="off") +
-  annotate("text", x = dat_labels$pos, y = -20, 
-                     label = str_wrap(dat_labels$`Career Stage`, width = 10)
-           ) +
-  theme(plot.margin = unit(c(1,1,8,1), "lines"))+
+  labs(y = "Percent", fill = "Category") +
+  coord_cartesian(ylim = c(0, 100), clip = "off") +
+  annotate(
+    "text",
+    x = dat_labels$pos,
+    y = -20,
+    label = str_wrap(dat_labels$`Career Stage`, width = 10)
+  ) +
+  theme(plot.margin = unit(c(1, 1, 8, 1), "lines")) +
   geom_vline(xintercept = dat_labels$Year)
 
 
