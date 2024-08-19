@@ -73,7 +73,7 @@ dat %>%
   annotate(
     "text",
     x = dat_labels$pos,
-    y = -20,
+    y = -50,
     label = str_wrap(dat_labels$`Career Stage`, width = 10)
   ) +
   theme(plot.margin = unit(c(1, 1, 8, 1), "lines")) +
