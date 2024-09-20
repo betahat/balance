@@ -1,0 +1,13 @@
+# Notes
+
+## structure
+- have two templates, one filled out, one blank
+- two tabs, one for each sheet
+- have default template be stand-in when page loads
+
+## colors
+- if they have a self, make it #080808
+- life should be shades of purple
+- if work, shades of blue/green
+- others oranges
+- else pick from Dark2

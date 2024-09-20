@@ -3,7 +3,7 @@ library(DT)
 
 
 fluidPage(
-    titlePanel("Life Balance Visualizer"),
+    titlePanel("Dynamic Life Equilibrium Visualizer"),
           sidebarLayout(
               sidebarPanel(
                   width = 2, 
@@ -18,7 +18,10 @@ fluidPage(
                       )
                   ), 
               mainPanel(
-                  plotOutput("plot1")
+                plotOutput("plot1"),
+                h1("Instructions"),
+                "instructions here"
+                  
                   )
               )
     )
