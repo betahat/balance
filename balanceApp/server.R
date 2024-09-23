@@ -9,24 +9,23 @@ conflicts_prefer(DT::renderDataTable)
 conflicts_prefer(dplyr::filter)
 conflicts_prefer(dplyr::lag)
 
-
 function(input, output, session) {
     source("functions.R", local = FALSE)
     
     output$downloadData <- downloadHandler(
         filename = "template.xlsx",
         content = function(file) {
-            file.copy("./Distributed Effort Worksheets.xlsx", file)
+            file.copy("./template.xlsx", file)
         },
         contentType = "application/xlsx"
     )
-    
     
     dat_raw <- reactive({
         inFile <- input$file1
         if (is.null(inFile))
             return(NULL)
-        data <- read_excel(inFile$datapath, skip = 2, sheet = "Lifetime Scale")
+        data <-
+            read_excel(inFile$datapath, skip = 1, sheet = "Lifetime Example")
         data$Year <- as.numeric(data$Year)
         data
     })
@@ -41,7 +40,7 @@ function(input, output, session) {
         inFile <- input$file1
         if (is.null(inFile))
             return(NULL)
-        data <- read_excel("Distributed Effort Worksheets.xlsx", sheet = "Lifetime Scale")
+        data <- read_excel(inFile$datapath, sheet = "Lifetime Example")
         data
     })
     

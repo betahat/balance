@@ -1,7 +1,6 @@
 library(shiny)
 library(DT)
 
-
 fluidPage(
     titlePanel("Dynamic Life Equilibrium Visualizer"),
           sidebarLayout(
@@ -18,6 +17,9 @@ fluidPage(
                       )
                   ), 
               mainPanel(
+                tabsetPanel(
+                  tabPanel("Annual Visualizer"),
+                  tabPanel("Lifetime Visualizer")),
                 plotOutput("plot1"),
                 h1("Instructions"),
                 "instructions here"

@@ -9,23 +9,30 @@ conflicts_prefer(dplyr::lag)
 
 # load data
 dat_raw <-
-  read_excel("Distributed Effort Worksheets.xlsx",
-             skip = 2,
-             sheet = "Lifetime Scale")
+  read_excel("template.xlsx",
+             skip = 1,
+             sheet = "Lifetime Example")
 
 dat_raw$Year <- as.numeric(dat_raw$Year)
 
 dat_vals <- dat_raw %>% 
   select(Year:Total)
 
-dat_cats <- read_excel("Distributed Effort Worksheets.xlsx", sheet = "Lifetime Scale")
+dat_cats <- 
+  read_excel(
+    "template.xlsx", sheet = "Lifetime Example", col_names = FALSE) %>% 
+  select(-...1,-...2)
 
 dat_labels <-
   dat_raw %>% 
   select(`Career Stage`:Year) %>% 
-  drop_na(`Career Stage`)
+  drop_na(`Career Stage`) %>% 
+  group_by(`Career Stage`) %>% 
+  slice_head() %>% 
+  arrange(Year) %>% 
+  ungroup()
 
-dat_labels %<>% rbind(c("End", max(dat_raw$Year))) %>% 
+dat_labels %<>% add_row(`Career Stage` = "End", Year = max(dat_raw$Year)) %>% 
   mutate(Year = as.numeric(Year))
 
 dat_labels$Year2 <- c(tail(dat_labels$Year,-1), NA)
