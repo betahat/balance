@@ -18,12 +18,9 @@ fluidPage(
                   ), 
               mainPanel(
                 tabsetPanel(
-                  tabPanel("Annual Visualizer"),
-                  tabPanel("Lifetime Visualizer")),
-                plotOutput("plot1"),
-                h1("Instructions"),
-                "instructions here"
-                  
+                  tabPanel("Instructions", "Instructions here"),
+                  tabPanel("Annual Visualizer", plotOutput("plot2")),
+                  tabPanel("Lifetime Visualizer", plotOutput("plot1")))
                   )
               )
     )
