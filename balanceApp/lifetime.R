@@ -3,7 +3,7 @@ dat_raw <- reactive({
   if (is.null(inFile))
     return(NULL)
   data <-
-    read_excel(inFile$datapath, skip = 1, sheet = "Lifetime Example")
+    read_excel(inFile$datapath, skip = 1, sheet = "Lifetime Visualizer")
   data$Year <- as.numeric(data$Year)
   data
 })
@@ -21,7 +21,7 @@ dat_cats <- reactive({
   data <-
     read_excel(
       inFile$datapath, 
-      sheet = "Lifetime Example", 
+      sheet = "Lifetime Visualizer", 
       col_names = FALSE) %>%
     select(-...1, -...2)
   data

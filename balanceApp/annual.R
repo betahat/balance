@@ -3,7 +3,7 @@ annual <- reactive({
   if (is.null(inFile))
     return(NULL)
   data <-
-    read_excel(inFile$datapath, skip = 1, sheet = "Annual Example")
+    read_excel(inFile$datapath, skip = 1, sheet = "Annual Visualizer")
   #data$Year <- as.numeric(data$Year)
   data
 })
@@ -21,7 +21,7 @@ a_dat_cats <- reactive({
   data <-
     read_excel(
       inFile$datapath, 
-      sheet = "Annual Example", 
+      sheet = "Annual Visualizer", 
       col_names = FALSE) %>%
     select(-...1, -...2)
   data
