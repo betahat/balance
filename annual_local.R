@@ -55,11 +55,7 @@ a_dat <-
 
 annual_pos <- read_excel("balanceApp/annual_pos.xlsx")
 
-ggplot(data = a_dat, aes(
-  x = Week,
-  y = value,
-  fill = name
-)) +
+ggplot(data = a_dat, aes(x = Week, y = value, fill = name)) +
   geom_area(position = 'stack') +
   #scale_fill_manual(values = my_pal()) +
   labs(y = "Percent", fill = "Category") +
@@ -71,4 +67,4 @@ ggplot(data = a_dat, aes(
     label = str_wrap(annual_pos$Season, width = 10)
   ) +
   theme(plot.margin = unit(c(1, 1, 8, 1), "lines")) +
-geom_vline(xintercept = annual_pos$line)
+  geom_vline(xintercept = annual_pos$line)
